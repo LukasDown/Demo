@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
 import java.util.List;
+import javafx.scene.control.Label;
 
 public class SceneController
 {    
@@ -19,7 +20,9 @@ public class SceneController
     @FXML   private Button noButton;
     @FXML   private Button exitButton;
     @FXML   private ListView listView;
-
+    @FXML   private Label SelectedID;
+    @FXML   private Label Id;
+   
     public SceneController()          // The constructor method, called first when the scene is loaded.
     {
         System.out.println("Initialising controllers...");
@@ -97,12 +100,13 @@ public class SceneController
         if (selectedItem == null)
         {
             System.out.println("Nothing selected!");
+            Id.setText(Integer.toString(0));
         }
         else
         {
             System.out.println(selectedItem + " (id: " + selectedItem.id + ") is selected.");
+            Id.setText(Integer.toString(selectedItem.id));
         }
-    }    
-
+    } 
 }
 
