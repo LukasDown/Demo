@@ -32,7 +32,7 @@ public class Fruit
         list.clear();       // Clear the target list first.
 
         /* Create a new prepared statement object with the desired SQL query. */
-        PreparedStatement statement = Application.database.newStatement("SELECT id, fruit, colour FROM demotable"); 
+        PreparedStatement statement = Application.database.newStatement("SELECT id, fruit, colour FROM demotable ORDER BY id"); 
 
         if (statement != null)      // Assuming the statement correctly initated...
         {
