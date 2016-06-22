@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
 import java.util.List;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
 
 public class SceneController
 {    
@@ -15,14 +16,12 @@ public class SceneController
 
     /* These FXML variables exactly corrispond to the controls that make up the scene, as designed in Scene 
      * Builder. It is important to ensure that these match perfectly or the controls won't be interactive. */
-    @FXML   private Pane backgroundPane;    
-    @FXML   private Button yesButton;
-    @FXML   private Button noButton;
-    @FXML   private Button exitButton;
+    @FXML   private Button Edit;
+    @FXML   private Button Remove;
+    @FXML   private Button Add;
+    @FXML   private Button Exit;
     @FXML   private ListView listView;
-    @FXML   private Label SelectedID;
-    @FXML   private Label Id;
-   
+    
     public SceneController()          // The constructor method, called first when the scene is loaded.
     {
         System.out.println("Initialising controllers...");
@@ -43,10 +42,10 @@ public class SceneController
         /* The following assertions check to see if the JavaFX controls exists. If one of these fails, the
          * application won't work. If the control names in Scene Builder don't match the variables this fails. */ 
         System.out.println("Asserting controls...");
-        assert backgroundPane != null : "Can't find background pane.";
-        assert yesButton != null : "Can't find yes button.";
-        assert noButton != null : "Can't find yes button.";
-        assert exitButton != null : "Can't find exit button.";
+        assert Edit != null : "Can't find Edit button";
+        assert Add != null : "Can't find Add button.";
+        assert Remove != null : "Can't find Remove button.";
+        assert Exit != null : "Can't find exit button.";
         assert listView != null : "Can't find list box.";
 
         /* Next, we load the list of fruit from the database and populate the listView. */
@@ -75,38 +74,43 @@ public class SceneController
 
     /* The next three methods are event handlers for clicking on the buttons. 
      * The names of these methods are set in Scene Builder so they work automatically. */    
-    @FXML   void yesClicked()
+    @FXML   void RemoveClicked()
     {
-        System.out.println("Yes was clicked!");        
+        System.out.println("Remove was clicked!");        
     }
 
-    @FXML   void noClicked()
+    @FXML   void EditClicked()
     {
-        System.out.println("No was clicked!");
+        System.out.println("Edit was clicked!");
+    }
+    
+    @FXML   void AddClicked()
+    {
+        System.out.println("Add was clicked!");
     }
 
-    @FXML   void exitClicked()
+
+    @FXML   void ExitClicked()
     {
         System.out.println("Exit was clicked!");        
         Application.terminate();        // Call the terminate method in the main Application class.
     }
 
     /* This method, set in SceneBuilder to occur when the listView is clicked, establishes which
-     * item in the view is currently selected (if any) and outputs it to the console. */    
-    @FXML   void listViewClicked()
+     * item in the view is currently selected (if any) and outputs it to the console.   
+     @FXML   void listViewClicked()
     {
-        Fruit selectedItem = (Fruit) listView.getSelectionModel().getSelectedItem();
+       Fruit selectedItem = (Fruit) listView.getSelectionModel().getSelectedItem();
 
-        if (selectedItem == null)
-        {
+       if (selectedItem == null)
+       {
             System.out.println("Nothing selected!");
             Id.setText(Integer.toString(0));
-        }
+       }
         else
         {
             System.out.println(selectedItem + " (id: " + selectedItem.id + ") is selected.");
             Id.setText(Integer.toString(selectedItem.id));
         }
-    } 
+    } */
 }
-
