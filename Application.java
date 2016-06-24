@@ -24,7 +24,7 @@ public class Application
     {
         try
         {         
-            database = new DatabaseConnection("Test.db");        // Initiate the database connection.
+            database = new DatabaseConnection("Test0.db");        // Initiate the database connection.
 
             /* Load the first fxml file that will create our first JavaFX scene. */
             FXMLLoader loader = new FXMLLoader(Application.class.getResource("Doughnuts.fxml"));

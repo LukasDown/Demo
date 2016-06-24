@@ -7,7 +7,8 @@ import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
 import java.util.List;
 import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
+import javafx.scene.control.ToggleButton;
+
 
 public class SceneController
 {    
@@ -21,6 +22,7 @@ public class SceneController
     @FXML   private Button Add;
     @FXML   private Button Exit;
     @FXML   private ListView listView;
+    @FXML   private ToggleButton ToggleButton;
     
     public SceneController()          // The constructor method, called first when the scene is loaded.
     {
@@ -51,8 +53,8 @@ public class SceneController
         /* Next, we load the list of fruit from the database and populate the listView. */
         System.out.println("Populating scene with items from the database...");        
         @SuppressWarnings("unchecked")
-        List<Fruit> targetList = listView.getItems();  // Grab a reference to the listView's current item list.
-        Fruit.readAll(targetList);                     // Hand over control to the fruit model to populate this list.
+        List<Doughnuts> targetList = listView.getItems();  // Grab a reference to the listView's current item list.
+        Doughnuts.readAll(targetList);                     // Hand over control to the fruit model to populate this list.
     }
 
     /* In order to catch stage events (the main example being the close (X) button being clicked) we need
@@ -97,20 +99,20 @@ public class SceneController
     }
 
     /* This method, set in SceneBuilder to occur when the listView is clicked, establishes which
-     * item in the view is currently selected (if any) and outputs it to the console.   
+     * item in the view is currently selected (if any) and outputs it to the console. */  
      @FXML   void listViewClicked()
     {
-       Fruit selectedItem = (Fruit) listView.getSelectionModel().getSelectedItem();
+       Doughnuts selectedItem = (Doughnuts) listView.getSelectionModel().getSelectedItem();
 
        if (selectedItem == null)
        {
             System.out.println("Nothing selected!");
-            Id.setText(Integer.toString(0));
+           
        }
         else
         {
             System.out.println(selectedItem + " (id: " + selectedItem.id + ") is selected.");
-            Id.setText(Integer.toString(selectedItem.id));
+
         }
-    } */
+    } 
 }
